@@ -14,8 +14,8 @@ export const jsonFetch = async <T>(
   const text = await res.text();
   const parsed = JSON.parse(text, options?.parseJson);
 
-  if ("status" in parsed && parsed.status !== 0) {
-    throw Error(parsed);
+  if ("code" in parsed) {
+    throw Error(parsed.msg ?? "Unknown error");
   }
 
   return parsed;

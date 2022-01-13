@@ -139,3 +139,144 @@ type TokenTickerResponse = {
   };
 };
 ```
+
+### fetchCryptoTrades
+
+The trades endpoint is to return data on all recently completed trades for a
+given cryptocurrency market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/tradesUsingGET)
+
+example:
+
+```ts
+import { fetchCryptoTrades } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoTrades({ symbol: "BTC/USD" });
+```
+
+parameters:
+
+```ts
+type CryptoTradesOptions = {
+  symbol: `${string}/${string}`;
+  type?: Type | undefined;
+};
+```
+
+returns:
+
+```ts
+type TradesResponse = {
+  tradeID: number;
+  price: number;
+  base_volume: number;
+  quote_volume: number;
+  trade_timestamp: number;
+  type: "sell" | "buy";
+}[];
+```
+
+### fetchCryptoTrades
+
+The trades endpoint is to return data on all recently completed trades for a
+given cryptocurrency market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/tradesUsingGET)
+
+example:
+
+```ts
+import { fetchCryptoTrades } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoTrades({ symbol: "BTC/USD" });
+```
+
+parameters:
+
+```ts
+type CryptoTradesOptions = {
+  symbol: `${string}/${string}`;
+  type?: "sell" | "buy" | undefined;
+};
+```
+
+returns:
+
+```ts
+type TradesResponse = {
+  tradeID: number;
+  price: number;
+  base_volume: number;
+  quote_volume: number;
+  trade_timestamp: number;
+  type: "sell" | "buy";
+}[];
+```
+
+### fetchTokenTrades
+
+The trades endpoint is to return data on all recently completed trades for a
+given token market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-rest-controller/tradesUsingGET_2)
+
+example:
+
+```ts
+import { fetchTokenTrades } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenTrades({ symbol: "AAPL" });
+```
+
+parameters:
+
+```ts
+type TokenTradesOptions = {
+  symbol: string;
+  type?: "sell" | "buy" | undefined;
+};
+```
+
+returns:
+
+```ts
+type TradesResponse = {
+  tradeID: number;
+  price: number;
+  base_volume: number;
+  quote_volume: number;
+  trade_timestamp: number;
+  type: "sell" | "buy";
+}[];
+```
+
+### fetchTokenCryptoTrades
+
+The trades endpoint is to return data on all recently completed trades for a
+given market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-crypto-rest-controller/tradesUsingGET_1)
+
+example:
+
+```ts
+import { fetchTokenCryptoTrades } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenCryptoTrades({ symbol: "BTC/USD" });
+await fetchTokenCryptoTrades({ symbol: "AAPL" });
+```
+
+parameters:
+
+```ts
+type TokenTradesOptions = {
+  symbol: string;
+  type?: "sell" | "buy" | undefined;
+};
+```
+
+returns:
+
+```ts
+type TradesResponse = {
+  tradeID: number;
+  price: number;
+  base_volume: number;
+  quote_volume: number;
+  trade_timestamp: number;
+  type: "sell" | "buy";
+}[];
+```
