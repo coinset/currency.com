@@ -376,3 +376,103 @@ type CryptoSummaryResponse = {
   }>;
 };
 ```
+
+### fetchCryptoOrderBook
+
+The order book endpoint is to provide a complete order book with full depth
+returned for a given cryptocurrency market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/depthUsingGET)
+
+example:
+
+```ts
+import { fetchCryptoOrderBook } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoOrderBook({ symbol: "BTC/USD" });
+```
+
+parameters:
+
+```ts
+type CryptoOrderBookOptions = {
+  symbol: `${string}/${string}`;
+  depth?: 0 | 5 | 10 | 20 | 50 | 100 | 500 | undefined;
+  level?: number | undefined;
+};
+```
+
+returns:
+
+```ts
+type OrderBookResponse = {
+  timestamp: number;
+  asks: [number, number][];
+  bids: [number, number][];
+};
+```
+
+### fetchTokenOrderBook
+
+The order book endpoint is to provide a complete order book with full depth
+returned for a given token market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-rest-controller/depthUsingGET_2)
+
+example:
+
+```ts
+import { fetchTokenOrderBook } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenOrderBook({ symbol: "AAPL" });
+```
+
+parameters:
+
+```ts
+type TokenOrderBookOptions = {
+  symbol: string;
+  depth?: 0 | 5 | 10 | 20 | 50 | 100 | 500 | undefined;
+  level?: number | undefined;
+};
+```
+
+returns:
+
+```ts
+type OrderBookResponse = {
+  timestamp: number;
+  asks: [number, number][];
+  bids: [number, number][];
+};
+```
+
+### fetchTokenCryptoOrderBook
+
+The order book endpoint is to provide a complete order book with full depth
+returned for a given market pair.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-crypto-rest-controller/depthUsingGET_1)
+
+example:
+
+```ts
+import { fetchTokenCryptoOrderBook } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenCryptoOrderBook({ symbol: "BTC/USD" });
+await fetchTokenCryptoOrderBook({ symbol: "AAPL" });
+```
+
+parameters:
+
+```ts
+type TokenOrderBookOptions = {
+  symbol: string;
+  depth?: 0 | 5 | 10 | 20 | 50 | 100 | 500 | undefined;
+  level?: number | undefined;
+};
+```
+
+returns:
+
+```ts
+type OrderBookResponse = {
+  timestamp: number;
+  asks: [number, number][];
+  bids: [number, number][];
+};
+```
