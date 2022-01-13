@@ -476,3 +476,50 @@ type OrderBookResponse = {
   bids: [number, number][];
 };
 ```
+
+### fetchCryptoCandles
+
+The assets endpoint is to provide a detailed summary for each cryptocurrency
+available on the exchange.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/candlesUsingGET)
+
+example:
+
+```ts
+import { fetchCryptoCandles } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoCandles({ symbol: "BTC/USD", interval: "M1" });
+```
+
+parameters:
+
+```ts
+type CandlesOptions = {
+  symbol: `${string}/${string}`;
+  interval:
+    | "M1"
+    | "M3"
+    | "M5"
+    | "M10"
+    | "M15"
+    | "M30"
+    | "H1"
+    | "H4"
+    | "D1"
+    | "W1";
+  limit?: number | undefined;
+  startTime?: number | undefined;
+  endTime?: number | undefined;
+};
+```
+
+returns:
+
+```ts
+type CandlesResponse = {
+  timestamp: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+}[];
+```
