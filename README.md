@@ -37,3 +37,37 @@ type AssetsResponse = {
   };
 };
 ```
+
+### fetchTicker
+
+The ticker endpoint is to provide a 24-hour pricing and volume summary for each
+cryptocurrency market pair available on the exchange.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/tickerUsingGET)
+
+example:
+
+```ts
+import { fetchTicker } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTicker();
+```
+
+returns:
+
+```ts
+type TickerResponse = {
+  [x: `${string}/${string}`]: {
+    base_currency: string;
+    base_volume: number;
+    description: string | null;
+    highest_bid_price: number;
+    isFrozen: boolean;
+    last_price: number;
+    lowest_ask_price: number;
+    past_24hrs_high_price: number;
+    past_24hrs_low_price: number;
+    past_24hrs_price_change: number;
+    quote_currency: string;
+    quote_volume: number;
+  };
+};
+```
