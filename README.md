@@ -523,3 +523,41 @@ type CandlesResponse = {
   close: number;
 }[];
 ```
+
+### fetchTokenCryptoOhlc
+
+Get OHLC data.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-crypto-rest-controller/ohlcUsingGET)
+
+example:
+
+```ts
+import { fetchTokenCryptoOhlc } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenCryptoOhlc({ symbol: "BTC/USD", interval: "15m" };
+```
+
+parameters:
+
+```ts
+type OhlcOptions<T extends string> = {
+  symbol: T;
+  interval: "1m" | "3m" | "5m" | "15m" | "30m" | "1h" | "4h" | "1d" | "1w";
+  since?: number | undefined;
+};
+```
+
+returns:
+
+```ts
+type OhlcResponse = {
+  result: {
+    timestamp: number;
+    open: number;
+    high: number;
+    low: number;
+    close: number;
+  }[];
+  last: number;
+  error: string[];
+};
+```
