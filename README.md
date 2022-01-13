@@ -8,7 +8,9 @@ Universal Currency.com API client
 
 A request for an entry point that does not require authentication.
 
-### fetchAssets
+### fetchCryptoAssets
+
+see fetchTokenAssets and fetchTokenCryptoAssets
 
 The assets endpoint is to provide a detailed summary for each cryptocurrency
 available on the exchange.
@@ -17,8 +19,8 @@ available on the exchange.
 example:
 
 ```ts
-import { fetchAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
-await fetchAssets();
+import { fetchCryptoAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoAssets();
 ```
 
 returns:

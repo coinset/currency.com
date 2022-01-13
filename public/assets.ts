@@ -28,13 +28,39 @@ export type AssetsResponse = Record<string, {
 
 /** The assets endpoint is to provide a detailed summary for each cryptocurrency available on the exchange.
  * ```ts
- * import { fetchAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
- * await fetchAssets();
+ * import { fetchCryptoAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+ * await fetchCryptoAssets();
  * ```
  * @see https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/doAssetsUsingGET
  */
-export function fetchAssets(): Promise<AssetsResponse> {
+export function fetchCryptoAssets(): Promise<AssetsResponse> {
   const url = new URL("assets", BASE_URL);
+
+  return jsonFetch(url);
+}
+
+/** The assets endpoint is to provide a detailed summary for each token available on the exchange.
+ * ```ts
+ * import { fetchTokenAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+ * await fetchTokenAssets();
+ * ```
+ * @see https://apimarketdoc.currency.com/swagger-ui.html#/token-rest-controller/doAssetsUsingGET_2
+ */
+export function fetchTokenAssets(): Promise<AssetsResponse> {
+  const url = new URL("token/assets", BASE_URL);
+
+  return jsonFetch(url);
+}
+
+/** The assets endpoint is to provide a detailed summary for each market pair available on the exchange.
+ * ```ts
+ * import { fetchTokenCryptoAssets } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+ * await fetchTokenCryptoAssets();
+ * ```
+ * @see https://apimarketdoc.currency.com/swagger-ui.html#/token-crypto-rest-controller/doAssetsUsingGET_1
+ */
+export function fetchTokenCryptoAssets(): Promise<AssetsResponse> {
+  const url = new URL("token_crypto/assets", BASE_URL);
 
   return jsonFetch(url);
 }
