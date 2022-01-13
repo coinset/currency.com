@@ -280,3 +280,99 @@ type TradesResponse = {
   type: "sell" | "buy";
 }[];
 ```
+
+### fetchCryptoSummary
+
+Overview of market data.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/rest-controller/statusUsingGET)
+
+example:
+
+```ts
+import { fetchCryptoSummary } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchCryptoSummary();
+```
+
+returns:
+
+```ts
+type CryptoSummaryResponse = {
+  msg: string | null;
+  data: Record<`${string}/${string}`, {
+    id: number;
+    last: number;
+    lowestAsk: number;
+    highestBid: number;
+    percentChange: number;
+    baseVolume: number;
+    quoteVolume: number;
+    isFrozen: null | boolean;
+    high24hr: number;
+    low24hr: number;
+  }>;
+};
+```
+
+### fetchTokenSummary
+
+Overview of market data.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-rest-controller/statusUsingGET_2)
+
+example:
+
+```ts
+import { fetchTokenSummary } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenSummary();
+```
+
+returns:
+
+```ts
+type CryptoSummaryResponse = {
+  msg: string | null;
+  data: Record<string, {
+    id: number;
+    last: number;
+    lowestAsk: number;
+    highestBid: number;
+    percentChange: number;
+    baseVolume: number;
+    quoteVolume: number;
+    isFrozen: null | boolean;
+    high24hr: number;
+    low24hr: number;
+  }>;
+};
+```
+
+### fetchTokenCryptoSummary
+
+Overview of market data.
+[Docs](https://apimarketdoc.currency.com/swagger-ui.html#/token-crypto-rest-controller/tradesUsingGET_1)
+
+example:
+
+```ts
+import { fetchTokenCryptoSummary } from "https://deno.land/x/currency_com@$VERSION/mod.ts";
+await fetchTokenCryptoSummary();
+```
+
+returns:
+
+```ts
+type CryptoSummaryResponse = {
+  msg: string | null;
+  data: Record<string, {
+    id: number;
+    last: number;
+    lowestAsk: number;
+    highestBid: number;
+    percentChange: number;
+    baseVolume: number;
+    quoteVolume: number;
+    isFrozen: null | boolean;
+    high24hr: number;
+    low24hr: number;
+  }>;
+};
+```
